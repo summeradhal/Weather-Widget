@@ -21,8 +21,8 @@ context=canvas.getContext('2d');
 		currentTemp=weatherData.list[0].main.temp;
 		currentSkies=weatherData.list[0].weather[0].id;
 		console.log(currentTemp);
-		animate(0);
-		weatherBg(currentSkies);
+		animate(0,currentSkies);
+		
 		
 		console.log(context);
 		
@@ -30,10 +30,25 @@ context=canvas.getContext('2d');
 })
 		})
 
-function animate(current){
+function animate(current,currentSkies){
 
+context.beginPath();
+context.rect(800,100,450,500);
+context.stroke();
+context.fillStyle="#ffffff";
+context.fill();
+
+
+
+if(current<70){
+	var tempColor='#2DC2B0';
 	//outer circle 
-var tempColor='#2DC2B0';
+}else if((current>=70)&&(current<90)){
+	var tempColor='#EEA513';
+}else if(current>=90){
+	var tempColor='#ff0';
+}
+
 context.strokeStyle=tempColor;
 context.lineWidth=10;
 // context.clearRect(0,0,300,300);
@@ -41,15 +56,16 @@ context.lineWidth=10;
 context.clearRect(0,0,300,300);
 //second circl
 context.beginPath();
-context.arc(200,200,60,Math.PI*0,Math.PI*2);
+context.arc(600,300,60,Math.PI*0,Math.PI*2);
 context.fillStyle="#9294AD"
+	weatherBg(currentSkies);
 
 
 
 
 context.fill();
 		context.beginPath();
-		context.arc(200,200,70,Math.PI*1.5,(current/100)*(Math.PI*2)+(Math.PI*1.5));
+		context.arc(600,300,70,Math.PI*1.5,(current/100)*(Math.PI*2)+(Math.PI*1.5));
 
 		context.stroke();
 		current++;
@@ -60,7 +76,7 @@ context.fill();
 		}
 		context.fillStyle="#000"
 		context.font="28px Arial";
-		context.fillText(currentTemp,170,210);
+		context.fillText(currentTemp,570,310);
 };
 
 
@@ -95,11 +111,10 @@ console.log(weatherNum);
 
 function drawSunny(){
 
-
-
+	console.log("test")
 	context.beginPath();
-	context.arc(0,0,50,Math.PI*0,Math.PI*2);
+	context.arc(10,10,50,Math.PI*0,Math.PI*1);
 	context.fillStyle="#9294AD"
-	context.stroke();
+	context.fill();
 
 }

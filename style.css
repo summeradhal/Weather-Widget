@@ -1,15 +1,28 @@
 .weatherPic{
 
-
+background-color:#BEC2D8;
 background-size:cover;
 
 }
+/* canvas{
+	border: 10px solid black;
+	background-color:white;
+	text-align:center;
+} */
+.box{
 
+	margin-left:400px;
+	margin-right:200px;
+	margin-top:500px;
+	background-color:white;
 
+}
 .weather-form{
 
 	text-align:center;
 	margin-top:100px;
+	color:#fff;
+	font-size:20px;
 
 
 }
