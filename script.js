@@ -20,8 +20,16 @@ context=canvas.getContext('2d');
 		console.log(weatherData);
 		currentTemp=weatherData.list[0].main.temp;
 		currentSkies=weatherData.list[0].weather[0].id;
+		
+		tempMax=weatherData.list[0].main.temp_max;
+		tempMin=weatherData.list[0].main.temp_min;
+		weatherDescription=weatherData.list[0].weather[0].description;
+		console.log(tempMax);
+		console.log(tempMin);
+		console.log(weatherDescription);
 		console.log(currentTemp);
 		animate(0,currentSkies);
+		drawBox(tempMax,tempMin,weatherDescription,currentTemp);
 		
 		
 		console.log(context);
@@ -31,13 +39,6 @@ context=canvas.getContext('2d');
 		})
 
 function animate(current,currentSkies){
-
-context.beginPath();
-context.rect(800,100,450,500);
-context.stroke();
-context.fillStyle="#ffffff";
-context.fill();
-
 
 
 if(current<70){
@@ -77,6 +78,47 @@ context.fill();
 		context.fillStyle="#000"
 		context.font="28px Arial";
 		context.fillText(currentTemp,570,310);
+	
+		
+};
+
+function drawBox(tempMax,tempMin,weatherDescription,currentTemp){
+
+context.beginPath();
+context.rect(800,100,450,500);
+context.stroke();
+context.fillStyle="#ffffff";
+context.fill();
+
+
+if(currentTemp<70){
+	var tempColor='#2DC2B0';
+	//outer circle 
+}else if((currentTemp>=70)&&(currentTemp<90)){
+	var tempColor='#EEA513';
+}else if(currentTemp>=90){
+	var tempColor='#ff0';
+}
+
+context.strokeStyle=tempColor;
+context.lineWidth=10;
+
+
+
+
+
+
+		context.fillStyle="#000"
+		context.font="28px Arial";
+
+		context.fillText("High: "+tempMin,820,470);
+		context.fillText('Low: '+tempMin,820,520);
+		context.font="20px Arial";
+		context.fillText(weatherDescription,970,200);
+
+	context.stroke();
+
+
 };
 
 
